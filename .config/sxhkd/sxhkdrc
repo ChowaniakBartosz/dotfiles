@@ -28,6 +28,10 @@ super + r
 super + w
 	brave
 
+# Flameshot
+Print
+	flameshot gui
+
 # Lockscreen
 super + shift + l
 	slock
@@ -45,3 +49,5 @@ super + p; r
 # Remove a package (including system packages)
 super + p; shift + r
 	$TERMINAL -e pacman-remove-any
+super + shift + m
+	$TERMINAL -e ncmpcpp

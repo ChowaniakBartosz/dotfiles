@@ -1,1 +1,1 @@
-echo " $(date +'%a %d/%m/%y %H:%M') "
+echo " $(date +'%a %d/%m/%y %H:%M')"
