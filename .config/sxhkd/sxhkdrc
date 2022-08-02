@@ -1,0 +1,47 @@
+XF86AudioMute
+	pamixer -t && kill -44 $(pidof dwmblocks)
+XF86AudioLowerVolume
+	pamixer -d 5 && kill -44 $(pidof dwmblocks)
+XF86AudioRaiseVolume
+	pamixer -i 5 && kill -44 $(pidof dwmblocks)
+XF86ScreenSaver
+	slock
+XF86MonBrightness{Up,Down}
+	brightnessctl s 10%{+,-}
+XF86MonBrightness{Up,Down} + shift
+	brightnessctl s 1%{+,-}
+
+# Restart sxhkd
+super + shift + s
+	kill $(pidof sxhkd) && sxhkd
+
+# Programs
+# Thunar
+super + e
+	pcmanfm
+
+# Rofi
+super + r
+	rofi -show drun
+
+# Web browser
+super + w
+	brave
+
+# Lockscreen
+super + shift + l
+	slock
+
+# Install software
+# Install from pacman repos
+super + p; i; p
+	$TERMINAL -e pacman-install
+# Install from aur using yay
+super + p; i; y
+	$TERMINAL -e yay-install
+# Remove a package
+super + p; r
+	$TERMINAL -e pacman-remove
+# Remove a package (including system packages)
+super + p; shift + r
+	$TERMINAL -e pacman-remove-any

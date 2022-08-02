@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vi" \
+	bc="bc -ql" \
+	mkd="mkdir -pv" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner"
+	shutdown="shutdown -h now"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	ip="ip -color=auto"
+
+se() {du -a ~/.config ~/.local/bin ~/.local/src | awk '{print $2}' | fzf | xargs -r $EDITOR; }
+c() {cd $(du $HOME | awk '{print $2}' | fzf)}
+
+alias n="nvim"
+alias vim="nvim"
+
+# Bypass sudo requirement for some commands
+for command in mount umount systemctl pacman shutdown poweroff reboot ; do
+	alias $command="sudo $command"
+done; unset command
+
+# Dotfiles alias
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.local/src/dotfiles --work-tree=$HOME'
