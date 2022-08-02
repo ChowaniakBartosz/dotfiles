@@ -1,0 +1,4 @@
+#!/bin/sh
+
+flatpak search "" | fzf -m | awk "{print \$1}" | xargs -ro flatpak install
+

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+user=$(whoami)
+yay -Syua
