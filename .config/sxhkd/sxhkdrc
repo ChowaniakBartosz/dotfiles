@@ -51,3 +51,5 @@ super + p; shift + r
 	$TERMINAL -e pacman-remove-any
 super + shift + m
 	$TERMINAL -e ncmpcpp
+super + n
+	$TERMINAL -e nvim
