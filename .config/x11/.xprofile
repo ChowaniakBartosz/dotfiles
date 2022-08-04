@@ -2,11 +2,14 @@
 
 dwmblocks &
 sxhkd &
+dunst &
+setup-monitors
 xwallpaper --zoom $HOME/.config/wallpapers/wall.jpg &
 xset r rate 200 50 &
 setxkbmap -option caps:swapescape &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
 unclutter &
+mpd &
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
 [ -n "$xrdbpid" ] && wait "$xrdbpid"

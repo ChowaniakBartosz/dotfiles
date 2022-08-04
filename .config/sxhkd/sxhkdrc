@@ -38,18 +38,19 @@ super + shift + l
 
 # Install software
 # Install from pacman repos
-super + p; i; p
+super + p; p
 	$TERMINAL -e pacman-install
 # Install from aur using yay
-super + p; i; y
+super + p; y
 	$TERMINAL -e yay-install
 # Remove a package
 super + p; r
 	$TERMINAL -e pacman-remove
 # Remove a package (including system packages)
-super + p; shift + r
+super + p; shift + r 
 	$TERMINAL -e pacman-remove-any
 super + shift + m
 	$TERMINAL -e ncmpcpp
 super + n
 	$TERMINAL -e nvim
+

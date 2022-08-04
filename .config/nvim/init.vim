@@ -5,6 +5,7 @@ source $HOME/.config/nvim/general/settings.vim
 " Load key mappings
 source $HOME/.config/nvim/keys/mappings.vim
 
+
 " vimwiki settings
 let g:vimwiki_list = [{'path':'~/notes', 'syntax':'markdown', 'ext':'.md'}]
 let g:vimwiki_ext2syntax = {'.md':'markdown', '.markdown':'markdown', '.mdown':'markdown'}
@@ -46,6 +47,15 @@ nnoremap <leader>g :Rg<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>m :Marks<CR>
 
+" CTRL+s saves
+nmap <c-s> :w<CR>
+imap <c-s> <Esc>:w<CR>a
+vmap <c-s> <Esc>:w<CR>
+
+" CTRL+q quits
+nmap <c-q> :q!<CR>
+imap <c-q> <Esc>:q!<CR>
+vmap <c-q> <Esc>:q!<CR>
 
 let g:fzf_tags_command = 'ctags -R'
 " Border color

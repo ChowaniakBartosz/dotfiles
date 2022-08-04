@@ -33,3 +33,14 @@ done; unset command
 
 # Dotfiles alias
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.local/src/dotfiles --work-tree=$HOME'
+
+# Vimwiki open file
+function wiki() {
+	nvim -c "VimwikiIndex" -c "VimwikiGoto $1"
+}
+
+# Tmux
+alias 																\
+	tn="tmux -u -f $TMUX_CONFIG new" 		\
+	ta="tmux -u -f $TMUX_CONFIG attach" \
+	tt="nvim $TMUX_CONFIG" 							\
