@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# ---
+# SYSTEM CONTROL
+# ---
+
+XF86AudioMute
+	pamixer -t && kill -35 $(pidof dwmblocks)
+XF86AudioLowerVolume
+	pamixer -d 5 && kill -35 $(pidof dwmblocks)
+XF86AudioRaiseVolume
+	pamixer -i 5 && kill -35 $(pidof dwmblocks)
+XF86ScreenSaver
+	slock
+XF86MonBrightnessUp
+	brightnessctl set +10%
+XF86MonBrightnessDown
+	brightnessctl set 10%-
+
+# ---
+# PROGRAMS
+# ---
+
+# SXHKD (Start/Restart)
+super + shift + s
+	kill $(pidof sxhkd) && sxhkd
+
+# FILE MANAGER
+super + shift + f
+	$TERMINAL -e lfub
+
+# POWER MENU
+super + x
+	powermenu
+
+# WEB BROWSER
+super + shift + w
+	brave
+
+super + shift + n
+	$TERMINAL -e notes
+super + shift + e
+	$TERMINAL -e nvim
+
+# Screenshot
+Print
+	screenshot
+  
+# Password menu
+# super + p
+# 	passmenu
+
+# Monitor setup
+# Single external monitor
+super + F1
+	monitor-single
+# Dual monitor
+super + F2
+	monitor-dual
+# Default laptop display
+super + F3
+	monitor-default

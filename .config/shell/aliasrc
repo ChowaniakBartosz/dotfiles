@@ -1,0 +1,46 @@
+#!/bin/sh
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	df="df -h" \
+	rsync="rsync -vrPlu" \
+	mkd="mkdir -pv" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ytt="yt --skip-download --write-thumbnail" \
+	ffmpeg="ffmpeg -hide_banner"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	ip="ip -color=auto"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	lg="lazygit" \
+	t="taskwarrior-tui" \
+	m="ncmpcpp" \
+	n="$EDITOR" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="shutdown -h now" \
+	p="paru" \
+	q="tgpt -w" \
+  e="$EDITOR $1 -c 'cd %:p:h'" \
+	t="tmux" \
+	ta="tmux a" \
+	ts="tmux ls" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove -R" \
+	xq="xbps-query" \
+	z="zathura" \
+  dot="git --git-dir=$HOME/repos/dotfiles --work-tree=$HOME" \
+	lf="lfub"
