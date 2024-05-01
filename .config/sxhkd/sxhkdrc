@@ -1,0 +1,17 @@
+XF86AudioRaiseVolume
+  pamixer -i 5 & kill -35 $(pidof dwmblocks) # 35 = sb-volume signal in dwmblocks + 34 offset
+  
+XF86AudioLowerVolume
+  pamixer -d 5 & kill -35 $(pidof dwmblocks) # 35 = sb-volume signal in dwmblocks + 34 offset
+
+super + w
+  brave
+
+super + shift + s
+  pkill -USR1 -x sxhkd # pkill -USR1 should send signal to reload sxhkd configuration
+
+super + e
+  $TERMINAL -e lfub
+
+super + o
+  flatpak run md.obsidian.Obsidian
