@@ -1,3 +1,4 @@
+#!/bin/sh
 XF86AudioRaiseVolume
   pamixer -i 5 & kill -35 $(pidof dwmblocks) # 35 = sb-volume signal in dwmblocks + 34 offset
   
@@ -15,3 +16,6 @@ super + e
 
 super + o
   flatpak run md.obsidian.Obsidian
+
+super + shift + k
+  keyboard # script that sets up my keyboard layout (pl with swapped caps and escape + faster rate)
