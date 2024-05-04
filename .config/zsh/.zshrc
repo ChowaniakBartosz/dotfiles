@@ -93,6 +93,7 @@ plug "zdharma-continuum/fast-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "zap-zsh/fzf"
 plug "romkatv/powerlevel10k"
+plug "kutsan/zsh-system-clipboard"
 
 # probably fish string search related
 autoload -U up-line-or-beginning-search
