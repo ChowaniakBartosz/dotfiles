@@ -1,4 +1,4 @@
--- Add plugin manager - Lazy
+-- Add Lazy - a plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -12,6 +12,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("vim-options")
-require("lazy").setup("plugins")
+-- Load other config files
+require("vim-options")            -- basic configuration
+require("lazy").setup("plugins")  -- load all plugins from 'lua/plugins' folder
 
