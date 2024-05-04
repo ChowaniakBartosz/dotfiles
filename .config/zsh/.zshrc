@@ -94,6 +94,7 @@ plug "zsh-users/zsh-history-substring-search"
 plug "zap-zsh/fzf"
 plug "romkatv/powerlevel10k"
 plug "kutsan/zsh-system-clipboard"
+plug "hlissner/zsh-autopair"
 
 # probably fish string search related
 autoload -U up-line-or-beginning-search
