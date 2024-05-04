@@ -1,7 +1,15 @@
+stty stop undef # disable ctrl+s to freeze terminal, must be before p10k not to throw error messages
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #!/bin/sh
 
 # basics
-stty stop undef # disable ctrl+s to freeze terminal, must be before p10k not to throw error messages
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments
 zle_highlight=('paste:none') # dont highlight pasted text
@@ -76,12 +84,15 @@ bindkey '^[[P' delete-char
 
 # Extra plugins
 
-source "$ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$ZDOTDIR/fzf-tab/fzf-tab.zsh"
-source "$ZDOTDIR/zsh-auto-notify/auto-notify.plugin.zsh"
-source "$ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
-source "$ZDOTDIR/zsh-history-substring-search/zsh-history-substring-search.zsh"
-source "$ZDOTDIR/fzf-key-bindings.zsh"
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "Aloxaf/fzf-tab"
+plug "Amir1453/zsh-auto-dunstify"
+plug "zdharma-continuum/fast-syntax-highlighting"
+plug "zsh-users/zsh-history-substring-search"
+plug "zap-zsh/fzf"
+plug "romkatv/powerlevel10k"
 
 # probably fish string search related
 autoload -U up-line-or-beginning-search
@@ -105,3 +116,6 @@ alias lf="lfub"
 alias g="lazygit"
 # plugins
 # bindings
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
