@@ -3,9 +3,9 @@ stty stop undef # disable ctrl+s to freeze terminal, must be before p10k not to 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 #!/bin/sh
 
@@ -16,24 +16,24 @@ zle_highlight=('paste:none') # dont highlight pasted text
 unsetopt BEEP # disable beeping
 autoload -Uz colors && colors # colors in terminal
 
-# prompt with git status
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git 
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-+vi-git-untracked(){
-    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '??' &> /dev/null ; then
-        hook_com[staged]+='!' # signify new files with a bang
-    fi
-}
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})%{$reset_color%}"
-PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b"
-#PROMPT="%{$fg[magenta]%}%~%{$fg[red]%}/ %{$reset_color%}$%b"
-PROMPT+="\$vcs_info_msg_0_ " # append git status
+## prompt with git status
+#autoload -Uz vcs_info
+#zstyle ':vcs_info:*' enable git 
+#precmd_vcs_info() { vcs_info }
+#precmd_functions+=( precmd_vcs_info )
+#setopt prompt_subst
+#zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+#+vi-git-untracked(){
+#    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+#        git status --porcelain | grep '??' &> /dev/null ; then
+#        hook_com[staged]+='!' # signify new files with a bang
+#    fi
+#}
+#zstyle ':vcs_info:*' check-for-changes true
+#zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[blue]%})%{$reset_color%}"
+#PROMPT="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b"
+##PROMPT="%{$fg[magenta]%}%~%{$fg[red]%}/ %{$reset_color%}$%b"
+#PROMPT+="\$vcs_info_msg_0_ " # append git status
 
 # zsh history cache
 HISTSIZE=10000000
@@ -92,7 +92,7 @@ plug "Amir1453/zsh-auto-dunstify"
 plug "zdharma-continuum/fast-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "zap-zsh/fzf"
-plug "romkatv/powerlevel10k"
+#plug "romkatv/powerlevel10k"
 plug "kutsan/zsh-system-clipboard"
 plug "hlissner/zsh-autopair"
 
@@ -116,8 +116,15 @@ alias ll="eza -la --icons=auto"
 alias neofetch="fastfetch"
 alias lf="lfub"
 alias g="lazygit"
+alias tn="tmux new -s Session"
+alias ta="tmux attach"
+alias td="tmux detach"
+alias tl="tmux ls"
+
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/.config/tmux/plugins/"
 # plugins
 # bindings
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+#[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+eval "$(starship init zsh)"
